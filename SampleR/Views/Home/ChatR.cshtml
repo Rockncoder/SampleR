@@ -1,0 +1,22 @@
+﻿@model SampleR.Chat.ChatData
+
+@{
+    ViewBag.Title = "Chat";
+}
+
+<h2>Chat</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel();
+    
+    <input id="send" value="send" type="button" />
+    <ul id="messages" style="list-style: none;"></ul>
+}
+
+
+@section Scripts { 
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script src="~/Scripts/jquery.signalR-1.0.0-rc2.js"></script>
+    <script src="~/Scripts/ChatR.js"></script>
+}

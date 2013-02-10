@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.7.1.js"></script>
+    <script src="../Scripts/jquery.signalR-1.0.0-rc2.js"></script>
+    <style type="text/css">
+        #userCount {
+            font-size: 48pt;
+        }
+    </style>
+</head>
+<body>
+    <div id="userCount"></div>
+
+    <script type="text/javascript">
+        $(function () {
+            /* Note: that the path matches what was specified in RouteCount */
+            var c = $.connection("/userCounter");
+
+            c.received(function (count) {
+                if (count === 1) {
+                    $('#userCount').html('There is ' + count + ' user');
+                } else {
+                    $('#userCount').html('There are ' + count + ' users');
+                }
+            });
+
+            c.start();
+        });
+    </script>
+</body>
+</html>
